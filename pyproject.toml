@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "opviz"
+version = "0.1.0"
+description = "Options risk graph"
+authors = ["Oleksandr Polieno <polyenoom@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "^3.8.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
