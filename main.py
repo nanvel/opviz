@@ -41,7 +41,7 @@ def main():
     ]
 
     plotter = Plotter()
-    plotter.plot(spot_price=Decimal("212.26"), options=options)
+    plotter(spot_price=Decimal("212.26"), options=options)
 
 
 if __name__ == "__main__":

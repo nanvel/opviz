@@ -17,3 +17,22 @@ class Option:
             f"{self.transaction_type.value} x{self.quantity} "
             f"{self.contract_type.value} ST:{self.strike} @ {self.premium}"
         )
+
+    def get_pnl(self, price: Decimal) -> Decimal:
+        if self.contract_type == ContractType.CALL:
+            if price > self.strike:
+                pnl = price - self.strike - self.premium
+            else:
+                pnl = -self.premium
+        elif self.contract_type == ContractType.PUT:
+            if price < self.strike:
+                pnl = self.strike - price - self.premium
+            else:
+                pnl = -self.premium
+        else:
+            raise ValueError(f"Invalid contract type: {self.contract_type}")
+
+        if self.transaction_type == TransactionType.SELL:
+            pnl *= -1
+
+        return pnl * self.quantity
